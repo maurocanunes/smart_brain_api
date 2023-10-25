@@ -5,11 +5,11 @@ const cors = require('cors');
 const knex = require('knex')({
     client: 'pg',
     connection: {
-      host : '127.0.0.1',
+      host : 'dpg-cks2knp0at9c73d588eg-a.oregon-postgres.render.com',
       port : 5432,
-      user : 'postgres',
-      password : 'mauro',
-      database : 'smart-brain'
+      user : 'mydb_7uzf_user',
+      password : 'iJiYH99LbQoRRCYWw3VNXEQiJaXkV4wp',
+      database : 'mydb_7uzf'
     }
   });
 
