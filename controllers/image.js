@@ -63,15 +63,15 @@ export const handleImage = (req, res, knex) => {
     // where id = 20;
     const { id } = req.body;
     
-    knex('users')
-        .where('id', '=', id)
-        .increment('entries', 1)
-        .returning('entries')
+    // knex('users')
+    //     .where('id', '=', id)
+    //     .increment('entries', 1)
+    //     .returning('entries')
         // .then(entries => {
         //     console.log(entries)
         //     // res.json(entries[0].entries)
         // })
-        .catch(err => res.status(400).json('unable to put entries'))
+        // .catch(err => res.status(400).json('unable to put entries'))
     knex.raw("select * from (" +
                 "select id, entries, " +
                 "row_number () over (" + 
