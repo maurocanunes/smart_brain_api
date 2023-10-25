@@ -1,4 +1,4 @@
-const handleProfileGet = (req, res, knex) => {
+export const handleProfileGet = (req, res, knex) => {
     const { id } = req.params;
     knex.select('*').from('users').where({id})
     .then(user => {
