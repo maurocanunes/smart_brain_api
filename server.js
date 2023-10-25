@@ -1,9 +1,11 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt-nodejs');
-const cors = require('cors');
+import express from "express";
+import bodyParser from "body-parser";
+import bcrypt from "bcrypt-nodejs";
+import cors from "cors";
+import knex from "knex";
 const { DATABASE_URL, DATABASE_HOST, DATABASE_USER, DATABASE_PW, DATABASE_DB } = process.env;
-const knex = require('knex')({
+
+const bx = knex({
     client: 'pg',
     connection: {
       connectionString : DATABASE_URL,
@@ -33,13 +35,13 @@ app.get('/', (req, res) => {
     res.send('success');
 })
 
-app.post('/signin', handleSignin(knex, bcrypt))
+app.post('/signin', handleSignin(db, bcrypt))
 
-app.post('/register', (req, res) => {handleRegister(req, res, knex, bcrypt)})
+app.post('/register', (req, res) => {handleRegister(req, res, db, bcrypt)})
 
-app.get('/profile/:id', (req, res) => {handleProfileGet(req, res, knex)})
+app.get('/profile/:id', (req, res) => {handleProfileGet(req, res, db)})
 
-app.put('/image', (req, res) => {handleImage(req, res, knex)})
+app.put('/image', (req, res) => {handleImage(req, res, db)})
 
 app.post('/imageurl', (req, res) => {handleApiCall(req, res)})
 
