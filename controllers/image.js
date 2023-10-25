@@ -78,7 +78,6 @@ export const handleImage = (req, res, knex) => {
                                     "order by entries desc) as rank from users) " + 
                                     ` where id = ${id}`)
     .then(result => {
-        console.log(result.rows[0])
         res.json(result.rows[0]);
     })
 
