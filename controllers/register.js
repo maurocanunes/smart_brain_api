@@ -26,7 +26,7 @@ const handleRegister = (req, res, knex, bcrypt) => {
         .catch(trx.rollback)
     })
     .catch(err => {
-        res.status(400).json(err)
+        res.status(400).json('error registering')
     }) 
 }   
 
