@@ -1,4 +1,4 @@
-const {ClarifaiStub, grpc} = require("clarifai-nodejs-grpc");
+import {ClarifaiStub, grpc} from "clarifai-nodejs-grpc";
 
 const USER_ID = '926h3x02micq';       
 const APP_ID = 'my-first-application-cjdlr';
