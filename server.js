@@ -5,7 +5,7 @@ import cors from "cors";
 import knex from "knex";
 const { DATABASE_URL, DATABASE_HOST, DATABASE_USER, DATABASE_PW, DATABASE_DB } = process.env;
 
-const bx = knex({
+const db = knex({
     client: 'pg',
     connection: {
       connectionString : DATABASE_URL,
