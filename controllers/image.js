@@ -13,7 +13,7 @@ const metadata = new grpc.Metadata();
 metadata.set("authorization", "Key " + PAT);
 
 
-const handleApiCall = (req, res) => {
+export const handleApiCall = (req, res) => {
     stub.PostModelOutputs(
         {
             user_app_id: {
@@ -48,7 +48,7 @@ const handleApiCall = (req, res) => {
 
 
 
-const handleImage = (req, res, knex) => {
+export const handleImage = (req, res, knex) => {
     // select * 
     // from (
     //         select id, 
@@ -83,8 +83,3 @@ const handleImage = (req, res, knex) => {
     })
 
 }
-
-module.exports = {
-    handleImage,
-    handleApiCall
-};
