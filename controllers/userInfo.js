@@ -4,7 +4,7 @@ export const handleUserInfo = (id, knex, res) => {
                                     "order by entries desc) as rank from users " + 
                                     ` where id = ${id}`)
     .then(result => {
-        return res.json(result)
+        return res.json(result.rows[0])
     })
     .catch(err =>{
         console.error(err);
