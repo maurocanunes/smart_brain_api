@@ -6,7 +6,7 @@ export const handleUserInfo = (id, knex, res) => {
     .then(result => {
         return res.json(result[0])
     })
-    .catch(err => res.status(400).json('error getting user info'))
+    .catch(err => res.status(400).json(err.response.data))
 }
 
 export default handleUserInfo;
