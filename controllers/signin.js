@@ -1,4 +1,4 @@
-import handleUserInfo from "./userInfo";
+import handleUserInfo from "./userInfo.js";
 
 export const handleSignin = (knex, bcrypt) => (req, res) => {
     const { email, password } = req.body;

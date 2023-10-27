@@ -1,5 +1,5 @@
 import {ClarifaiStub, grpc} from "clarifai-nodejs-grpc";
-import handleUserRank from "./userInfo";
+import handleUserInfo from "./userInfo.js";
 
 const USER_ID = '926h3x02micq';       
 const APP_ID = 'my-first-application-cjdlr';

@@ -1,4 +1,4 @@
-import handleUserInfo from "./userInfo";
+import handleUserInfo from "./userInfo.js";
 
 export const handleProfileGet = (req, res, knex) => {
     const { id } = req.params;

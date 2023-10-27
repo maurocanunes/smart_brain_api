@@ -1,4 +1,4 @@
-import handleUserInfo from "./userInfo";
+import handleUserInfo from "./userInfo.js";
 
 export const handleRegister = (req, res, knex, bcrypt) => {
     const { email, name, password } = req.body;
