@@ -1,3 +1,5 @@
+import handleUserInfo from "./userInfo";
+
 export const handleSignin = (knex, bcrypt) => (req, res) => {
     const { email, password } = req.body;
     if (!email || !password) {
@@ -8,10 +10,10 @@ export const handleSignin = (knex, bcrypt) => (req, res) => {
     .then(data => {
      const isValid = bcrypt.compareSync(password, data[0].hash);
      if (isValid) {
-         return knex.select().from('users')
+         knex.select().from('users')
          .where('email', '=', email)
          .then(user => {
-             res.json(user[0])
+             return res.json(handleUserInfo(user[0].id, knex))
          })
          .catch(err => res.status(400).json('unable to get user'))
      } else {

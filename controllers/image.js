@@ -1,4 +1,5 @@
 import {ClarifaiStub, grpc} from "clarifai-nodejs-grpc";
+import handleUserRank from "./userInfo";
 
 const USER_ID = '926h3x02micq';       
 const APP_ID = 'my-first-application-cjdlr';
@@ -63,21 +64,21 @@ export const handleImage = (req, res, knex) => {
     // where id = 20;
     const { id } = req.body;
     
-    // knex('users')
-    //     .where('id', '=', id)
-    //     .increment('entries', 1)
-    //     .returning('entries')
-        // .then(entries => {
-        //     console.log(entries)
-        //     // res.json(entries[0].entries)
-        // })
-        // .catch(err => res.status(400).json('unable to put entries'))
-    knex.raw("select id, entries, " +
-                "row_number () over (" + 
-                                    "order by entries desc) as rank from users) " + 
-                                    ` where id = ${id}`)
-    .then(result => {
-        res.json(result.rows[0]);
-    })
+    knex('users')
+        .where('id', '=', id)
+        .increment('entries', 1)
+        .returning('entries')
+        .then(entries => {
+            res.json(handleUserInfo(id, knex)[0])
+            // res.json(entries[0].entries)
+        })
+        .catch(err => res.status(400).json('unable to put entries'))
+    // knex.raw("select id, entries, " +
+    //             "row_number () over (" + 
+    //                                 "order by entries desc) as rank from users) " + 
+    //                                 ` where id = ${id}`)
+    // .then(result => {
+    //     res.json(result.rows[0]);
+    // })
 
 }

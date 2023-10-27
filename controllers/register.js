@@ -1,3 +1,5 @@
+import handleUserInfo from "./userInfo";
+
 export const handleRegister = (req, res, knex, bcrypt) => {
     const { email, name, password } = req.body;
     if (!email || !name || !password) {
@@ -19,7 +21,7 @@ export const handleRegister = (req, res, knex, bcrypt) => {
                     email: loginEmail[0].email,
                     joined: new Date()
                 }).then(user => {
-                    res.send(user[0]);
+                    res.send(handleUserInfo(user[0].id, knex));
                 })
         })
         .then(trx.commit)
