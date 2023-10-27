@@ -6,6 +6,7 @@ export const handleUserInfo = (id, knex) => {
     .then(result => {
         return result[0]
     })
+    .catch(err => {return err})
 }
 
 export default handleUserInfo;
