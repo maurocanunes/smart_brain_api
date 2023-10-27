@@ -13,7 +13,7 @@ export const handleSignin = (knex, bcrypt) => (req, res) => {
          knex.select().from('users')
          .where('email', '=', email)
          .then(user => {
-             return res.json(handleUserInfo(user[0].id, knex))
+             return handleUserInfo(user[0].id, knex, res)
          })
          .catch(err => res.status(400).json('unable to get user'))
      } else {

@@ -21,7 +21,7 @@ export const handleRegister = (req, res, knex, bcrypt) => {
                     email: loginEmail[0].email,
                     joined: new Date()
                 }).then(user => {
-                    res.send(handleUserInfo(user[0].id, knex));
+                    handleUserInfo(user[0].id, knex, res);
                 })
         })
         .then(trx.commit)

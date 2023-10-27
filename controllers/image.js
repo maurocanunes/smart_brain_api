@@ -69,7 +69,7 @@ export const handleImage = (req, res, knex) => {
         .increment('entries', 1)
         .returning('entries')
         .then(entries => {
-            res.json(handleUserInfo(id, knex)[0])
+            return handleUserInfo(id, knex, res)
             // res.json(entries[0].entries)
         })
         .catch(err => res.status(400).json('unable to put entries'))

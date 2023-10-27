@@ -2,7 +2,7 @@ import handleUserInfo from "./userInfo.js";
 
 export const handleProfileGet = (req, res, knex) => {
     const { id } = req.params;
-    return res.json(handleUserInfo(id, knex));
+    return handleUserInfo(id, knex, res);
 //     knex.select('*').from('users').where({id})
 //     .then(user => {
 //         if(user.length) {
